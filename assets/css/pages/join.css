@@ -469,6 +469,17 @@
   pointer-events: none;
 }
 
+a.apply-button,
+a.apply-button:link,
+a.apply-button:visited,
+a.apply-button:hover,
+a.apply-button:active {
+  color: #51658d;
+  text-decoration: none;
+  background: #f5d742;
+  border: none;
+}
+
 .apply-text {
   overflow: hidden;
   color: var(--ivory);

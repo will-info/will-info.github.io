@@ -340,12 +340,87 @@
   font-style: normal;
   font-weight: 400;
   line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.workshop-intro {
+  color: var(--ivory);
+  font-family: var(--noto);
+  font-size: var(--font_14);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.6;
+  margin: 0 0 16px 0;
+}
+
+.workshop-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  width: 100%;
+}
+
+.workshop-item {
+  padding-top: 16px;
+  padding-bottom: 16px;
+  border-top: 1px solid rgba(255, 252, 247, 0.25);
+}
+
+.workshop-item:first-of-type {
+  padding-top: 0;
+  border-top: none;
+}
+
+.workshop-item-title {
+  color: var(--ivory);
+  font-family: var(--noto);
+  font-size: var(--font_18);
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-bottom: 4px;
+}
+
+.workshop-desc {
+  color: var(--ivory);
+  font-family: var(--noto);
+  font-size: var(--font_14);
+  font-style: normal;
+  font-weight: 200;
+  line-height: 1.6;
+  margin: 0 0 8px 0;
+}
+
+.workshop-item .schedule-block {
+  margin-top: 4px;
+  padding-left: 12px;
+  border-left: 3px solid var(--ivory);
+}
+
+.workshop-item .schedule-block:first-of-type {
+  margin-top: 0;
+}
+
+.workshop-item .schedule {
+  font-size: var(--font_18);
+  font-weight: 500;
+}
+
+.workshop-item .number {
+  font-size: var(--font_22);
 }
 
 .schedule-block {
   display: flex;
   align-items: center;
-  gap: 20px;
+  flex-wrap: wrap;
+  column-gap: 20px;
+  row-gap: 4px;
+}
+
+.schedule-break {
+  flex-basis: 100%;
+  height: 0;
 }
 
 .number {
@@ -400,6 +475,17 @@
   background: gray;
   cursor: not-allowed;
   pointer-events: none;
+}
+
+a.apply-button,
+a.apply-button:link,
+a.apply-button:visited,
+a.apply-button:hover,
+a.apply-button:active {
+  color: #51658d;
+  text-decoration: none;
+  background: #f5d742;
+  border: none;
 }
 
 .apply-text {
@@ -478,6 +564,7 @@
   .step {
     gap: 10px;
   }
+
 /* 
   .step-explanation {
     flex: 0 0 0;
@@ -567,6 +654,7 @@
   .background-logo img {
     height: 90px;
   }
+}
 
 /* ───────────────────────────
 ① Smart phone  (0 – 639 px)
@@ -628,6 +716,19 @@
   .schedule-block {
     gap: 12px;
     flex-wrap: wrap;
+  }
+
+  .workshop-item .schedule-block {
+    padding-left: 10px;
+    border-left-width: 2px;
+  }
+
+  .workshop-item .schedule {
+    font-size: var(--font_16);
+  }
+
+  .workshop-item .number {
+    font-size: var(--font_18);
   }
 
   .number {

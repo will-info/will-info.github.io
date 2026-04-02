@@ -146,24 +146,273 @@
                 </div>
               </div>
               <div class="event-schedule-frame">
-                <div class="event-schedule-title">〈開催日程〉</div>
-                <div class="as-neeeded-message">
-                  現在の期間は、参加希望に応じて随時開催中です。<br>
-                  参加希望の方は、各SNSのDMまたはメールにてご連絡ください。<br>
-                  問い合わせ先については、<a href="../faq/index.html">「問い合わせ・FAQ」</a>ページをご確認ください。
-                </div>
-                <!-- <div class="schedule-block disabled">
-                  <div class="number">➀</div>
-                  <div class="schedule">
-                    04. 08 <span class="day">Tue </span>14:00～ @対面開催
+                <div class="workshop-list">
+                  <div class="workshop-item">
+                    <div class="workshop-item-title">Web開発</div>
+                    <p class="workshop-desc">HTML, CSS, JavaScriptで簡単なWebサイトを作っていただきます！</p>
+                  </div>
+                  <div class="workshop-item">
+                    <div class="workshop-item-title">機械学習</div>
+                    <p class="workshop-desc">Pythonを使ってkaggleというプラットフォームのチュートリアル(Titanic)に取り組んでいただきます！</p>
                   </div>
                 </div>
-                <div class="schedule-block">
-                  <div class="number">➁</div>
-                  <div class="schedule">
-                    04. 10 <span class="day">Thu </span>14:00～ @対面開催
+                <div class="event-schedule-title">〈4月の開催日程〉</div>
+                <div class="join-month-calendar" aria-label="4月の開催日程カレンダー">
+                  <div class="join-calendar-weekdays">
+                    <div class="join-calendar-weekday">月</div>
+                    <div class="join-calendar-weekday">火</div>
+                    <div class="join-calendar-weekday">水</div>
+                    <div class="join-calendar-weekday">木</div>
+                    <div class="join-calendar-weekday">金</div>
+                    <div class="join-calendar-weekday">土</div>
+                    <div class="join-calendar-weekday">日</div>
                   </div>
-                </div> -->
+                  <div class="join-calendar-grid" id="join-calendar-grid"></div>
+                </div>
+                <script>
+                  (() => {
+                    const calendarGrid = document.getElementById("join-calendar-grid");
+                    if (!calendarGrid) throw new Error("カレンダー描画に失敗しました");
+
+                    const events = [
+                      {
+                        dateKey: "2026-04-01",
+                        slot: 1,
+                        kind: "web",
+                        title: "Web開発",
+                        when: "14:30~",
+                        location: "@理工キャンパス",
+                      },
+                      {
+                        dateKey: "2026-04-05",
+                        slot: 1,
+                        kind: "online",
+                        title: "オンライン説明会",
+                        when: "21:00~",
+                      },
+                      {
+                        dateKey: "2026-04-09",
+                        slot: 1,
+                        kind: "online",
+                        title: "オンライン説明会",
+                        when: "21:00~",
+                      },
+                      {
+                        dateKey: "2026-04-11",
+                        slot: 1,
+                        kind: "online",
+                        title: "オンライン説明会",
+                        when: "21:00~",
+                      },
+                      {
+                        dateKey: "2026-04-13",
+                        slot: 1,
+                        kind: "ml",
+                        title: "機械学習",
+                        when: "5 or 6限",
+                        location: "@理工キャンパス",
+                      },
+                      {
+                        dateKey: "2026-04-14",
+                        slot: 1,
+                        kind: "online",
+                        title: "オンライン説明会",
+                        when: "20:00~",
+                      },
+                      {
+                        dateKey: "2026-04-15",
+                        slot: 1,
+                        kind: "ml",
+                        title: "機械学習",
+                        when: "3限",
+                        location: "@早稲田キャンパス",
+                      },
+                      {
+                        dateKey: "2026-04-17",
+                        slot: 1,
+                        kind: "web",
+                        title: "Web開発",
+                        when: "5 or 6限",
+                        location: "@理工キャンパス",
+                      },
+                      {
+                        dateKey: "2026-04-18",
+                        slot: 1,
+                        kind: "special",
+                        title: "特別イベント",
+                        when: "13:30~",
+                        location: "@早稲田キャンパス",
+                      },
+                      {
+                        dateKey: "2026-04-20",
+                        slot: 1,
+                        kind: "web",
+                        title: "Web開発",
+                        when: "5 or 6限",
+                        location: "@理工キャンパス",
+                      },
+                      {
+                        dateKey: "2026-04-21",
+                        slot: 1,
+                        kind: "ml",
+                        title: "機械学習",
+                        when: "2限",
+                        location: "@早稲田キャンパス",
+                      },
+                      {
+                        dateKey: "2026-04-22",
+                        slot: 1,
+                        kind: "online",
+                        title: "オンライン説明会",
+                        when: "20:00~",
+                      },
+                      {
+                        dateKey: "2026-04-23",
+                        slot: 1,
+                        kind: "web",
+                        title: "Web開発",
+                        when: "5限",
+                        location: "@早稲田キャンパス",
+                      },
+                      {
+                        dateKey: "2026-04-27",
+                        slot: 1,
+                        kind: "ml",
+                        title: "機械学習",
+                        when: "5 or 6限",
+                        location: "@理工キャンパス",
+                      },
+                      {
+                        dateKey: "2026-04-28",
+                        slot: 1,
+                        kind: "web",
+                        title: "Web開発",
+                        when: "4限",
+                        location: "@早稲田キャンパス",
+                      },
+                      {
+                        dateKey: "2026-04-29",
+                        slot: 1,
+                        kind: "ml",
+                        title: "機械学習",
+                        when: "2限",
+                        location: "@早稲田キャンパス",
+                      },
+                      {
+                        dateKey: "2026-04-30",
+                        slot: 1,
+                        kind: "online",
+                        title: "オンライン説明会",
+                        when: "20:00~",
+                      },
+                    ];
+
+                    if (!Array.isArray(events) || events.length !== 17) throw new Error("イベントデータが不正です");
+
+                    const pad2 = (n) => String(n).padStart(2, "0");
+                    const eventsByDateKey = new Map();
+                    const slotToMark = (slot) => (slot === 1 ? "➀" : slot === 2 ? "➁" : String(slot));
+                    const validKinds = new Set(["web", "ml", "online", "special"]);
+                    for (const event of events) {
+                      if (!event || typeof event.dateKey !== "string") throw new Error("イベントデータが不正です");
+                      if (typeof event.kind !== "string" || !validKinds.has(event.kind)) throw new Error("イベントデータが不正です");
+                      if (typeof event.title !== "string") throw new Error("イベントデータが不正です");
+                      if (typeof event.slot !== "number") throw new Error("イベントデータが不正です");
+                      if (typeof event.when !== "string") throw new Error("イベントデータが不正です");
+                      if (event.location !== undefined && typeof event.location !== "string") throw new Error("イベントデータが不正です");
+                      if (!/^\d{4}-\d{2}-\d{2}$/.test(event.dateKey)) throw new Error("日付形式が不正です");
+
+                      const prev = eventsByDateKey.get(event.dateKey) || [];
+                      prev.push(event);
+                      eventsByDateKey.set(event.dateKey, prev);
+                    }
+
+                    const year = 2026;
+                    const monthIndex = 3;
+                    const monthStart = new Date(year, monthIndex, 1);
+                    const daysInMonth = new Date(year, monthIndex + 1, 0).getDate();
+
+                    if (daysInMonth !== 30) throw new Error("対象月の日数が想定と異なります");
+
+                    const weekStartMondayIndex = (monthStart.getDay() + 6) % 7;
+                    if (weekStartMondayIndex !== 2) throw new Error("4/1 が水曜ではありません");
+
+                    const totalCells = Math.ceil((weekStartMondayIndex + daysInMonth) / 7) * 7;
+                    const fragment = document.createDocumentFragment();
+
+                    for (let cellIndex = 0; cellIndex < totalCells; cellIndex++) {
+                      const dayNumber = cellIndex - weekStartMondayIndex + 1;
+
+                      const cell = document.createElement("div");
+                      cell.className = "join-calendar-day";
+
+                      if (dayNumber < 1 || dayNumber > daysInMonth) {
+                        cell.classList.add("is-empty");
+                        fragment.appendChild(cell);
+                        continue;
+                      }
+
+                      const dateKey = `${year}-${pad2(monthIndex + 1)}-${pad2(dayNumber)}`;
+                      const dayNumberEl = document.createElement("div");
+                      dayNumberEl.className = "join-calendar-day-number";
+                      dayNumberEl.textContent = String(dayNumber);
+                      cell.appendChild(dayNumberEl);
+
+                      const dayEvents = eventsByDateKey.get(dateKey) || [];
+                      if (dayEvents.length > 0) {
+                        dayEvents.sort((a, b) => a.slot - b.slot);
+                        cell.classList.add("has-events");
+
+                        const eventsListEl = document.createElement("div");
+                        eventsListEl.className = "join-calendar-events";
+
+                        const hasMultiple = dayEvents.length > 1;
+                        for (const ev of dayEvents) {
+                          const evEl = document.createElement("div");
+                          evEl.className = `join-calendar-event join-calendar-event--${ev.kind}`;
+
+                          const topEl = document.createElement("div");
+                          topEl.className = "join-calendar-event-top";
+
+                          if (hasMultiple) {
+                            const slotEl = document.createElement("div");
+                            slotEl.className = "join-calendar-event-slot";
+                            slotEl.textContent = slotToMark(ev.slot);
+                            topEl.appendChild(slotEl);
+                          }
+
+                          const titleEl = document.createElement("div");
+                          titleEl.className = "join-calendar-event-title";
+                          titleEl.textContent = ev.title;
+                          topEl.appendChild(titleEl);
+
+                          evEl.appendChild(topEl);
+
+                          const whenEl = document.createElement("div");
+                          whenEl.className = "join-calendar-event-when";
+                          whenEl.textContent = ev.when;
+                          evEl.appendChild(whenEl);
+
+                          if (ev.location !== undefined) {
+                            const locationEl = document.createElement("div");
+                            locationEl.className = "join-calendar-event-location";
+                            locationEl.textContent = ev.location;
+                            evEl.appendChild(locationEl);
+                          }
+
+                          eventsListEl.appendChild(evEl);
+                        }
+
+                        cell.appendChild(eventsListEl);
+                      }
+
+                      fragment.appendChild(cell);
+                    }
+
+                    calendarGrid.innerHTML = "";
+                    calendarGrid.appendChild(fragment);
+                  })();
+                </script>
               </div>
             </div>
             <div class="application-button">

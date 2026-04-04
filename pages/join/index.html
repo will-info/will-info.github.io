@@ -135,17 +135,29 @@
                   </div>
                 </div>
                 <div class="event-schedule-title">〈4月の開催日程〉</div>
-                <div class="join-month-calendar" aria-label="4月の開催日程カレンダー">
-                  <div class="join-calendar-weekdays">
-                    <div class="join-calendar-weekday">月</div>
-                    <div class="join-calendar-weekday">火</div>
-                    <div class="join-calendar-weekday">水</div>
-                    <div class="join-calendar-weekday">木</div>
-                    <div class="join-calendar-weekday">金</div>
-                    <div class="join-calendar-weekday">土</div>
-                    <div class="join-calendar-weekday">日</div>
+                <div class="join-month-calendar">
+                  <div class="join-calendar-scroll-track">
+                    <div
+                      class="join-calendar-scroll"
+                      id="join-calendar-scroll"
+                      tabindex="0"
+                      role="region"
+                      aria-label="4月の開催日程カレンダー。横にスクロールして全週を表示できます。"
+                    >
+                      <div class="join-calendar-weekdays">
+                        <div class="join-calendar-weekday">月</div>
+                        <div class="join-calendar-weekday">火</div>
+                        <div class="join-calendar-weekday">水</div>
+                        <div class="join-calendar-weekday">木</div>
+                        <div class="join-calendar-weekday">金</div>
+                        <div class="join-calendar-weekday">土</div>
+                        <div class="join-calendar-weekday">日</div>
+                      </div>
+                      <div class="join-calendar-grid" id="join-calendar-grid"></div>
+                    </div>
+                    <span class="join-calendar-scroll-hint join-calendar-scroll-hint--left" aria-hidden="true"></span>
+                    <span class="join-calendar-scroll-hint join-calendar-scroll-hint--right" aria-hidden="true"></span>
                   </div>
-                  <div class="join-calendar-grid" id="join-calendar-grid"></div>
                 </div>
                 <script>
                   (() => {
@@ -389,6 +401,72 @@
 
                     calendarGrid.innerHTML = "";
                     calendarGrid.appendChild(fragment);
+
+                    const equalizeJoinCalendarEventHeights = () => {
+                      const gridEl = document.getElementById("join-calendar-grid");
+                      if (!gridEl) throw new Error("カレンダーグリッドが見つかりません");
+                      const events = [...gridEl.querySelectorAll(".join-calendar-event")];
+                      for (const el of events) {
+                        el.style.minHeight = "";
+                      }
+                      let maxH = 0;
+                      for (const ev of events) {
+                        maxH = Math.max(maxH, ev.getBoundingClientRect().height);
+                      }
+                      if (maxH <= 0) return;
+                      const px = `${Math.ceil(maxH)}px`;
+                      for (const ev of events) {
+                        ev.style.minHeight = px;
+                      }
+                    };
+
+                    const scrollRoot = document.getElementById("join-calendar-scroll");
+                    const scrollTrack = scrollRoot?.closest(".join-calendar-scroll-track");
+                    if (scrollRoot && scrollTrack) {
+                      const slack = 2;
+                      const updateScrollHints = () => {
+                        const maxScroll = scrollRoot.scrollWidth - scrollRoot.clientWidth;
+                        const scrollable = maxScroll > slack;
+                        scrollTrack.classList.toggle("join-calendar-scroll-track--scrollable", scrollable);
+                        if (!scrollable) {
+                          scrollTrack.classList.remove(
+                            "join-calendar-scroll-track--hint-left",
+                            "join-calendar-scroll-track--hint-right"
+                          );
+                          return;
+                        }
+                        const atStart = scrollRoot.scrollLeft <= slack;
+                        const atEnd = scrollRoot.scrollLeft >= maxScroll - slack;
+                        scrollTrack.classList.toggle("join-calendar-scroll-track--hint-left", !atStart);
+                        scrollTrack.classList.toggle("join-calendar-scroll-track--hint-right", !atEnd);
+                      };
+                      const layoutJoinCalendar = () => {
+                        equalizeJoinCalendarEventHeights();
+                        updateScrollHints();
+                      };
+                      scrollRoot.addEventListener("scroll", updateScrollHints, { passive: true });
+                      window.addEventListener("resize", layoutJoinCalendar);
+                      if (typeof ResizeObserver !== "undefined") {
+                        new ResizeObserver(layoutJoinCalendar).observe(calendarGrid);
+                      }
+                      requestAnimationFrame(() => {
+                        requestAnimationFrame(layoutJoinCalendar);
+                      });
+                      if (document.fonts && typeof document.fonts.ready !== "undefined") {
+                        document.fonts.ready.then(() => {
+                          requestAnimationFrame(layoutJoinCalendar);
+                        });
+                      }
+                    } else {
+                      requestAnimationFrame(() => {
+                        requestAnimationFrame(equalizeJoinCalendarEventHeights);
+                      });
+                      if (document.fonts && typeof document.fonts.ready !== "undefined") {
+                        document.fonts.ready.then(() => {
+                          requestAnimationFrame(equalizeJoinCalendarEventHeights);
+                        });
+                      }
+                    }
                   })();
                 </script>
               </div>

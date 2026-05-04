@@ -268,7 +268,8 @@
 
 .event-entire-frame {
   display: flex;
-  align-items: flex-end;
+  flex-direction: column;
+  align-items: stretch;
   z-index: 10;
   gap: 36px;
 }
@@ -277,9 +278,9 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  align-self: flex-start;
   gap: 12px;
   min-width: 480px;
+  width: 100%;
 }
 
 .event-title-frame {
@@ -407,7 +408,7 @@
 
 .join-calendar-weekdays {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
+  grid-template-columns: repeat(7, minmax(0, 1fr));
   column-gap: 8px;
   margin-bottom: 10px;
   padding: 0px 4px;
@@ -425,7 +426,7 @@
 
 .join-calendar-grid {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
+  grid-template-columns: repeat(7, minmax(0, 1fr));
   gap: 8px;
   padding: 0px 4px;
   align-items: stretch;
@@ -538,6 +539,15 @@
 .join-calendar-event--ml {
   border-left: 4px solid rgba(64, 190, 255, 0.8);
   background: rgba(64, 190, 255, 0.10);
+}
+
+.join-calendar-event--dual {
+  border-left: 4px solid rgba(160, 200, 230, 0.95);
+  background: linear-gradient(
+    135deg,
+    rgba(64, 190, 255, 0.12) 0%,
+    rgba(255, 215, 0, 0.12) 100%
+  );
 }
 
 .join-calendar-event--online {
@@ -704,6 +714,28 @@ a.apply-button:active {
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+}
+
+.join-event-contact-notice {
+  margin: 0;
+  max-width: 40em;
+  text-align: center;
+  color: var(--ivory);
+  font-family: var(--noto);
+  font-size: var(--font_16);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.65;
+}
+
+.join-event-contact-notice a {
+  color: var(--ivory);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.join-event-contact-notice a:hover {
+  text-decoration-thickness: 2px;
 }
 
 .background-logo {
@@ -1061,6 +1093,10 @@ a.apply-button:active {
   .apply-text {
     font-size: var(--font_12);
     text-align: center;
+  }
+
+  .join-event-contact-notice {
+    font-size: var(--font_14);
   }
 
   .background-logo {

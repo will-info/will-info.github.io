@@ -3,6 +3,36 @@
 // イベントデータ（直接埋め込み）
 const eventsData = [
   {
+    "title": "新宿で街歩き謎解きをしました！",
+    "date": "2026.4.26",
+    "image": "../../assets/images/events/202604_新宿謎解き.webp",
+    "imageAlt": "新宿で街歩き謎解きの様子",
+    "description": 
+      `4月レクとして新宿の街歩き謎解きを行いました！新たなWILL入部生と協力して難しい謎を全て解くことができました。
+      最後には偶然くまっキーとも会えて楽しい1日になりました！`
+  },
+  {
+    "title": "卒業生の送別会を開催しました！",
+    "date": "2026.3.27",
+    "image": "../../assets/images/events/202603_卒業生送別会.webp",
+    "imageAlt": "卒業生送別会の様子",
+    "description": 
+      `渋谷のトムボーイで送別会！🗿総勢12名の賑やかな会になりました。
+      卒業される皆さん、新天地でのご活躍を応援しています！`
+  },
+  {
+    "title": "理科大TNDとコラボハッカソンを行いました！",
+    "date": "2026.2.15",
+    "image": "../../assets/images/events/202602_TND合同ハッカソン.webp",
+    "imageAlt": "TNDコラボハッカソンの様子",
+    "description": 
+      `理科大プログラミングサークルTNDと共同で1週間のハッカソンを開催しました！
+      テーマは「5年後に使われていそうなツール」、企画からデプロイまで各チームが完走しました。
+      熱い議論が繰り広げられ、大学の枠を超えて切磋琢磨する最高の交流機会となりました。
+      参加者の皆さん、本当にお疲れ様でした！
+      `
+  },
+  {
     "title": "房総半島へドライブしました！",
     "date": "2025.10.12",
     "image": "../../assets/images/events/202510_recreation_bousou-drive.webp",
@@ -14,14 +44,19 @@ const eventsData = [
     "date": "2025.8.29",
     "image": "../../assets/images/events/202508_u22-pro-con.webp",
     "imageAlt": "U22プログラミングコンテスト参加の様子",
-    "description": "WILLの有志メンバーで、7月末から8月29日にかけて「U22プログラミングコンテスト」に参加しました！<br>開発したアプリの詳細は、以下のリンクよりご確認いただけます！<br><a href=\"https://protopedia.net/prototype/private/3b37b4fe-5169-48fc-b195-483930bab3d3\" target=\"_blank\" rel=\"noopener noreferrer\">作品紹介ページ</a>"
+    "description": 
+      `WILLの有志メンバーで、7月末から8月29日にかけて「U22プログラミングコンテスト」に参加しました！
+      開発したアプリの詳細は、以下のリンクよりご確認いただけます！
+      <a href="https://protopedia.net/prototype/private/3b37b4fe-5169-48fc-b195-483930bab3d3" target="_blank" rel="noopener noreferrer">作品紹介ページ</a>`
   },
   {
     "title": "Wheel-upを開催しました！",
     "date": "2025.7.16",
     "image": "../../assets/images/events/202507_wheel-up.webp",
     "imageAlt": "Wheel-upイベントの様子",
-    "description": "チーム開発イベント「Wheel-up」を開催しました！<br>約7週間、開発の基礎から学び、生成AIを用いてチームでWebアプリを開発しました。"
+    "description": 
+      `チーム開発イベント「Wheel-up」を開催しました！
+      約7週間、開発の基礎から学び、生成AIを用いてチームでWebアプリを開発しました。`
   },
   {
     "title": "新歓BBQを開催しました！",
@@ -42,14 +77,18 @@ const eventsData = [
     "date": "2025.4.1",
     "image": "../../assets/images/shinkan.webp",
     "imageAlt": "イベント写真",
-    "description": "今年もやります！WILLの新歓！新入生、既存生、早大生ではない方も大歓迎です！<br>プログラミングに興味ある方はぜひ一度説明会に参加してみてください！"
+    "description": 
+      `今年もやります！WILLの新歓！新入生、既存生、早大生ではない方も大歓迎です！
+      プログラミングに興味ある方はぜひ一度説明会に参加してみてください！`
   },
   {
     "title": "新サイトを開設しました！",
     "date": "2025.4.1",
     "image": "../../assets/images/event-photo.webp",
     "imageAlt": "イベント写真",
-    "description": "この度、WILLの新規HPを開設致しました！これから随時このサイトで入会に関する新規情報やイベント情報などを発信していきます！<br>ぜひチェックしてみてください！"
+    "description": 
+      `この度、WILLの新規HPを開設致しました！これから随時このサイトで入会に関する新規情報やイベント情報などを発信していきます！
+      ぜひチェックしてみてください！`
   },
 ];
 
@@ -152,7 +191,7 @@ function displayEvents(events, assetsPath) {
             <div class="event-date">${event.date}</div>
           </div>
           <div class="event-description">
-            ${event.description}
+            ${event.description.replace(/\n/g, '<br>')}
           </div>
         </div>
       </div>

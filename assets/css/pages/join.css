@@ -222,16 +222,21 @@
 /* イベントセクション */
 .event-section {
   display: flex;
-  padding: 60px 48px;
+  padding: 60px clamp(36px, 4vw, 48px);
   flex-direction: column;
   align-items: center;
   align-self: stretch;
   background: var(--shinonome);
   position: relative;
+  box-sizing: border-box;
 }
 
 .event-section .section-title {
   color: var(--ivory);
+  align-self: stretch;
+  width: 100%;
+  text-align: center;
+  box-sizing: border-box;
 }
 
 .event-entire-title {
@@ -249,12 +254,20 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 70px;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  padding-inline-end: clamp(56px, 9vw, 180px);
 }
 
 .event-block {
   display: flex;
   align-items: center;
   gap: 56px;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
 }
 
 .event-block img {
@@ -264,13 +277,20 @@
   border-radius: 12px;
   width: 388px;
   height: 244px;
+  flex-shrink: 0;
 }
 
 .event-entire-frame {
   display: flex;
-  align-items: flex-end;
+  flex-direction: column;
+  align-items: flex-start;
+  flex: 1 1 0%;
+  min-width: 0;
+  max-width: 100%;
   z-index: 10;
   gap: 36px;
+  padding-inline-end: clamp(24px, 5vw, 100px);
+  box-sizing: border-box;
 }
 
 .event-text-frame {
@@ -279,7 +299,14 @@
   align-items: flex-start;
   align-self: flex-start;
   gap: 12px;
-  min-width: 480px;
+  min-width: min(480px, 100%);
+  width: fit-content;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.event-entire-frame > .application-button {
+  align-self: stretch;
 }
 
 .event-title-frame {
@@ -407,7 +434,7 @@
 
 .join-calendar-weekdays {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
+  grid-template-columns: repeat(7, minmax(0, 1fr));
   column-gap: 8px;
   margin-bottom: 10px;
   padding: 0px 4px;
@@ -425,7 +452,7 @@
 
 .join-calendar-grid {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
+  grid-template-columns: repeat(7, minmax(0, 1fr));
   gap: 8px;
   padding: 0px 4px;
   align-items: stretch;
@@ -538,6 +565,15 @@
 .join-calendar-event--ml {
   border-left: 4px solid rgba(64, 190, 255, 0.8);
   background: rgba(64, 190, 255, 0.10);
+}
+
+.join-calendar-event--dual {
+  border-left: 4px solid rgba(160, 200, 230, 0.95);
+  background: linear-gradient(
+    135deg,
+    rgba(64, 190, 255, 0.12) 0%,
+    rgba(255, 215, 0, 0.12) 100%
+  );
 }
 
 .join-calendar-event--online {
@@ -706,6 +742,36 @@ a.apply-button:active {
   line-height: normal;
 }
 
+.join-event-contact-notice {
+  margin: 0;
+  width: 100%;
+  max-width: 100%;
+  text-align: center;
+  color: var(--ivory);
+  font-family: var(--noto);
+  font-size: var(--font_16);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.65;
+  box-sizing: border-box;
+}
+
+@media (min-width: 1201px) {
+  .join-event-contact-notice {
+    white-space: nowrap;
+  }
+}
+
+.join-event-contact-notice a {
+  color: var(--ivory);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.join-event-contact-notice a:hover {
+  text-decoration-thickness: 2px;
+}
+
 .background-logo {
   position: absolute;
   right: 34px;
@@ -788,6 +854,7 @@ a.apply-button:active {
 
   .event-container {
     align-items: center;
+    padding-inline-end: 0;
   }
 
   .event-block {
@@ -806,10 +873,14 @@ a.apply-button:active {
   }
 
   .event-entire-frame {
+    flex: 0 1 auto;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
     align-self: stretch;
+    width: 100%;
+    max-width: 100%;
+    padding-inline-end: 0;
   }
 
   .event-text-frame {
@@ -908,6 +979,7 @@ a.apply-button:active {
   .event-container {
     gap: 40px;
     width: 100%;
+    padding-inline-end: 0;
   }
 
   .event-block {
@@ -924,9 +996,12 @@ a.apply-button:active {
   }
 
   .event-entire-frame {
+    flex: 0 1 auto;
     flex-direction: column;
     gap: 20px;
     width: 100%;
+    max-width: 100%;
+    padding-inline-end: 0;
   }
   .event-title-frame {
     flex-direction: column;
@@ -1061,6 +1136,10 @@ a.apply-button:active {
   .apply-text {
     font-size: var(--font_12);
     text-align: center;
+  }
+
+  .join-event-contact-notice {
+    font-size: var(--font_14);
   }
 
   .background-logo {

@@ -3,6 +3,27 @@
 // イベントデータ（直接埋め込み）
 const eventsData = [
   {
+    "title": "ご飯会を開催しました！",
+    "date": "2026.6.28",
+    "image": "../../assets/images/events/202606_ご飯会.webp",
+    "imageAlt": "ご飯会の様子",
+    "description": 
+      `6月のレクではご飯会としてやよい軒に行ってきました！
+      参加者は全員一人暮らしをしていることもあり一人暮らしトークで盛り上がりました！
+      久しぶりの和食がとてもおいしかったです！`
+  },
+  {
+    "title": "2026春Wheel-upの最終報告会を行いました！",
+    "date": "2026.6.25",
+    "image": "../../assets/images/events/20260625_Wheel-up.webp",
+    "imageAlt": "Wheel-upイベントの様子",
+    "description": 
+      `チーム開発イベント「Wheel-up」が終了！
+      今回は「東京紹介」をテーマに、あえてAIを使わずHTML等の基礎を学びながらWebサイトを制作。
+      経験者のサポートもあり、アイデアを形にしたサイトが完成しました！
+      <a href="https://wu-2026-web-project.github.io/WU_2026_Spring_Tue2" target="_blank" rel="noopener noreferrer">WILLメンバーが東京紹介してみた</a>`
+  },
+  {
     "title": "新宿で街歩き謎解きをしました！",
     "date": "2026.4.26",
     "image": "../../assets/images/events/202604_新宿謎解き.webp",

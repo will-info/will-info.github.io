@@ -3,6 +3,24 @@
 // イベントデータ（直接埋め込み）
 const eventsData = [
   {
+    "title": "夏休み企画のKaggleコンペが終了しました！",
+    "date": "2026.8.31",
+    "image": "../../assets/images/events/202608_kaggle-competition.webp",
+    "imageAlt": "Kaggleコンペの様子",
+    "description":
+      `夏休み企画のKaggleコンペが終了しました！週1回、対面とオンラインで活動報告を行いました。
+      スマホ中毒者の予測というテーマで取り組み、データの可視化や質疑応答を通じて機械学習に対する理解が深まりました！`
+  },
+  {
+    "title": "8月レクでご飯会を開催しました！",
+    "date": "2026.8.2",
+    "image": "../../assets/images/events/202608_ご飯会.webp",
+    "imageAlt": "ご飯会の様子",
+    "description": 
+      `8月レクとして高田馬場の「まぐろんち本店」さんでご飯会を行いました！
+      ボリューム満点のカマ焼きがとても美味しかったです！`
+  },
+  {
     "title": "ご飯会を開催しました！",
     "date": "2026.6.28",
     "image": "../../assets/images/events/202606_ご飯会.webp",
